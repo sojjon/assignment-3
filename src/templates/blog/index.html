@@ -1,0 +1,82 @@
+{% extends 'partial/base.html' %}
+
+{% block metainfo %}
+<title> Django </title>
+{% endblock metainfo %}
+
+{% block content %}
+
+<!-- Begin Site Title
+================================================== -->
+<div class="container">
+	<div class="mainheading">
+		<h1 class="sitetitle">{{ blog.blog_name }}</h1>
+		<p class="lead">
+			 {{blog.description}}
+		</p>
+	</div>
+<!-- End Site Title
+================================================== -->
+
+	
+
+	<!-- Begin List Posts
+	================================================== -->
+
+
+	<section class="recent-posts">
+	<div class="section-title">
+		<h2><span>LATEST POST</span></h2>
+	</div>
+	<div class="card-columns listrecent">
+		{% for story in story_post %}
+		<!-- begin post -->
+		<div class="card">
+			<a href="{{story.slug}}">
+				<img class="img-fluid" src="{{ story.featured_image.url }}" alt="">
+			</a>
+			<div class="card-block">
+				<h2 class="card-title"><a href="{{story.slug}}">{{story.title}}</a></h2>
+				<h4 class="card-text">{{ story.content|truncatechars:150|safe }} </h4>
+				<div class="metafooter">
+					<div class="wrapfooter">
+						<span class="meta-footer-thumb">
+						<img class="author-thumb" src="https://i.ibb.co/d4DfVZh/sojjon.jpg?s=250&amp;d=mm&amp;r=x" alt="Sojjon">
+						</span>
+						<span class="author-meta">
+						<span class="post-name"><a href="#">Sojjon</a></span><br/>
+						<span class="post-date">{{story.mod_date}}</span><span class="dot"></span>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- end post -->
+		{% endfor %}
+
+		
+		
+		
+
+	</div>
+	</section>
+
+	<nav aria-label="Page navigation example">
+		<ul class="pagination">
+		  <li class="page-item"><a class="page-link" href="/?page=1">Previous</a></li>
+		  <li class="page-item"><a class="page-link" href="data.previous_page_number">1</a></li>
+
+		  <li class="page-item"><a class="page-link" href="#">2</a></li>
+		  <li class="page-item"><a class="page-link" href="#">3</a></li>
+		  <li class="page-item"><a class="page-link" href="#">Next</a></li>
+		</ul>
+	  </nav>
+	<!-- End List Posts
+
+		
+	
+
+
+	{% endblock content %}
+
+
